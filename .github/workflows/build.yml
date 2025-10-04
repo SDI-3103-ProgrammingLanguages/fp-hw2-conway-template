@@ -1,0 +1,23 @@
+name: Build and Test
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '8.0.x'
+    - name: Restore dependencies
+      run: dotnet restore ConwayGame.fsproj
+    - name: Build
+      run: dotnet build --configuration Release ConwayGame.fsproj
+    - name: Run sample
+      run: dotnet run --project ConwayGame.fsproj -- --pattern patterns/glider.txt --gens 1 --width 10 --height 10
