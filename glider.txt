@@ -1,0 +1,8 @@
+# Glider pattern coordinates
+# Format: each line contains x y coordinates of a live cell
+# Coordinates are relative; you can shift them when loading
+0 1
+1 2
+2 0
+2 1
+2 2
